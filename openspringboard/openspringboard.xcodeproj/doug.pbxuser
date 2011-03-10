@@ -1,15 +1,39 @@
 // !$*UTF8*$!
 {
+	1D3623250D0F684500981E51 /* openspringboardAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1183}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1278}";
+		};
+	};
 	1D6058900D05DD3D006BFB54 /* openspringboard */ = {
 		activeExec = 0;
 		executables = (
 			91EFFB611314C50F00715DD2 /* openspringboard */,
 		);
 	};
+	28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {648, 399}}";
+			sepNavSelRange = "{263, 0}";
+			sepNavVisRange = "{0, 272}";
+		};
+	};
+	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {782, 1742}}";
+			sepNavSelRange = "{516, 0}";
+			sepNavVisRange = "{255, 1333}";
+		};
+	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 91EFFB611314C50F00715DD2 /* openspringboard */;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* openspringboard */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* openspringboard */,
+		);
 		codeSenseManager = 91EFFB711314C52200715DD2 /* Code sense */;
 		executables = (
 			91EFFB611314C50F00715DD2 /* openspringboard */,
@@ -20,9 +44,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					595,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -37,12 +61,290 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 320128272;
-			PBXWorkspaceStateSaveDate = 320128272;
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					609,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					555,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 321418351;
+			PBXWorkspaceStateSaveDate = 321418351;
+		};
+		perUserProjectItems = {
+			91037276132877F5001072DA /* XCBuildMessageTextBookmark */ = 91037276132877F5001072DA /* XCBuildMessageTextBookmark */;
+			91037277132877F5001072DA /* PBXTextBookmark */ = 91037277132877F5001072DA /* PBXTextBookmark */;
+			9103727C13287818001072DA /* PBXTextBookmark */ = 9103727C13287818001072DA /* PBXTextBookmark */;
+			9103728413287843001072DA /* PBXTextBookmark */ = 9103728413287843001072DA /* PBXTextBookmark */;
+			9103728513287843001072DA /* PBXTextBookmark */ = 9103728513287843001072DA /* PBXTextBookmark */;
+			9103728613287843001072DA /* PBXTextBookmark */ = 9103728613287843001072DA /* PBXTextBookmark */;
+			9103728713287843001072DA /* PBXTextBookmark */ = 9103728713287843001072DA /* PBXTextBookmark */;
+			9103728813287843001072DA /* PBXTextBookmark */ = 9103728813287843001072DA /* PBXTextBookmark */;
+			9103728913287843001072DA /* PBXTextBookmark */ = 9103728913287843001072DA /* PBXTextBookmark */;
+			910372C413287AB6001072DA /* PBXTextBookmark */ = 910372C413287AB6001072DA /* PBXTextBookmark */;
+			910372C513287AB6001072DA /* PlistBookmark */ = 910372C513287AB6001072DA /* PlistBookmark */;
+			910372C613287AB6001072DA /* PBXTextBookmark */ = 910372C613287AB6001072DA /* PBXTextBookmark */;
+			910372CE13287AE8001072DA /* PBXTextBookmark */ = 910372CE13287AE8001072DA /* PBXTextBookmark */;
+			910372D813287D3D001072DA /* PBXTextBookmark */ = 910372D813287D3D001072DA /* PBXTextBookmark */;
+			910372D913287D3D001072DA /* PBXBookmark */ = 910372D913287D3D001072DA /* PBXBookmark */;
+			910372DA13287D3D001072DA /* PBXBookmark */ = 910372DA13287D3D001072DA /* PBXBookmark */;
+			910372DB13287D3D001072DA /* PlistBookmark */ = 910372DB13287D3D001072DA /* PlistBookmark */;
+			910372DC13287D3D001072DA /* PlistBookmark */ = 910372DC13287D3D001072DA /* PlistBookmark */;
+			910372F213287D92001072DA /* PlistBookmark */ = 910372F213287D92001072DA /* PlistBookmark */;
+			910372F313287D92001072DA /* PlistBookmark */ = 910372F313287D92001072DA /* PlistBookmark */;
+			910372F613287DB7001072DA /* PlistBookmark */ = 910372F613287DB7001072DA /* PlistBookmark */;
 		};
 		sourceControlManager = 91EFFB701314C52200715DD2 /* Source Control */;
 		userBuildSettings = {
 		};
+	};
+	9103726E1328775A001072DA /* OpenSpringBoard.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {894, 585}}";
+			sepNavSelRange = "{24, 0}";
+			sepNavVisRange = "{0, 1365}";
+		};
+	};
+	9103726F1328775A001072DA /* OpenSpringBoard.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {971, 5512}}";
+			sepNavSelRange = "{1376, 0}";
+			sepNavVisRange = "{400, 1526}";
+		};
+	};
+	91037276132877F5001072DA /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Utilities.h: No such file or directory";
+		fRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 10;
+		rType = 1;
+	};
+	91037277132877F5001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */;
+		name = "OpenSpringBoard.m: 11";
+		rLen = 0;
+		rLoc = 210;
+		rType = 0;
+		vrLen = 308;
+		vrLoc = 87;
+	};
+	9103727C13287818001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */;
+		name = "OpenSpringBoard.m: 11";
+		rLen = 0;
+		rLoc = 210;
+		rType = 0;
+		vrLen = 308;
+		vrLoc = 87;
+	};
+	9103728413287843001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286DF0D94DF7D0034E888 /* RootViewController.h */;
+		name = "RootViewController.h: 12";
+		rLen = 0;
+		rLoc = 272;
+		rType = 0;
+		vrLen = 272;
+		vrLoc = 0;
+	};
+	9103728513287843001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* openspringboardAppDelegate.m */;
+		name = "openspringboardAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1278;
+		vrLoc = 0;
+	};
+	9103728613287843001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9103726E1328775A001072DA /* OpenSpringBoard.h */;
+		name = "OpenSpringBoard.h: 2";
+		rLen = 0;
+		rLoc = 24;
+		rType = 0;
+		vrLen = 1365;
+		vrLoc = 0;
+	};
+	9103728713287843001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 95";
+		rLen = 0;
+		rLoc = 2881;
+		rType = 0;
+		vrLen = 1344;
+		vrLoc = 532;
+	};
+	9103728813287843001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */;
+		name = "OpenSpringBoard.m: 11";
+		rLen = 0;
+		rLoc = 210;
+		rType = 0;
+		vrLen = 978;
+		vrLoc = 0;
+	};
+	9103728913287843001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */;
+		name = "OpenSpringBoard.m: 55";
+		rLen = 0;
+		rLoc = 1376;
+		rType = 0;
+		vrLen = 1526;
+		vrLoc = 400;
+	};
+	910372C413287AB6001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */;
+		name = "OpenSpringBoard.m: 55";
+		rLen = 0;
+		rLoc = 1376;
+		rType = 0;
+		vrLen = 1526;
+		vrLoc = 400;
+	};
+	910372C513287AB6001072DA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* openspringboard-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/doug/Developer/openspringboard/openspringboard/openspringboard-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	910372C613287AB6001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 85";
+		rLen = 0;
+		rLoc = 2546;
+		rType = 0;
+		vrLen = 1401;
+		vrLoc = 2033;
+	};
+	910372CE13287AE8001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 29";
+		rLen = 0;
+		rLoc = 516;
+		rType = 0;
+		vrLen = 1330;
+		vrLoc = 255;
+	};
+	910372D813287D3D001072DA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 29";
+		rLen = 0;
+		rLoc = 516;
+		rType = 0;
+		vrLen = 1333;
+		vrLoc = 255;
+	};
+	910372D913287D3D001072DA /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 9103728D1328798C001072DA /* tool_calendar_APR.png */;
+	};
+	910372DA13287D3D001072DA /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 910372D213287D19001072DA /* Application_Icon_57.png */;
+	};
+	910372DB13287D3D001072DA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* openspringboard-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/doug/Developer/openspringboard/openspringboard/openspringboard-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	910372DC13287D3D001072DA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* openspringboard-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIdentifier,
+		);
+		name = "/Users/doug/Developer/openspringboard/openspringboard/openspringboard-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	910372F213287D92001072DA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* openspringboard-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIdentifier,
+		);
+		name = "/Users/doug/Developer/openspringboard/openspringboard/openspringboard-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	910372F313287D92001072DA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* openspringboard-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIdentifier,
+		);
+		name = "/Users/doug/Developer/openspringboard/openspringboard/openspringboard-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	910372F613287DB7001072DA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* openspringboard-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIdentifier,
+		);
+		name = "/Users/doug/Developer/openspringboard/openspringboard/openspringboard-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 	91EFFB611314C50F00715DD2 /* openspringboard */ = {
 		isa = PBXExecutable;
@@ -60,6 +362,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);

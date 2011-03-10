@@ -2,11 +2,12 @@
 //  RootViewController.m
 //  openspringboard
 //
-//  Created by d. nye on 2/22/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by fieldforceapp_dev on 2/22/11.
+//  Copyright 2011 Mobile Flow LLC. All rights reserved.
 //
 
 #import "RootViewController.h"
+#import "OpenSpringBoard.h"
 
 
 @implementation RootViewController
@@ -15,43 +16,34 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	tableSectionData = [[NSMutableArray alloc] init];
+	
+	NSArray *rows;
+	NSDictionary *d;
+	
+#define kSectionSpringBoardTests 0
+	rows = [NSArray arrayWithObjects:@"Default",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"SpringBoard UI Tests",@"section_title",nil];
+	[tableSectionData addObject:d];
 }
-*/
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
 
-/*
- // Override to allow orientations other than the default portrait orientation.
+	self.title = @"Open SpringBoard";
+}
+
+// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return ( (interfaceOrientation == UIInterfaceOrientationPortrait) ||
+			(interfaceOrientation == UIInterfaceOrientationLandscapeLeft) );
 }
- */
 
 
 #pragma mark -
@@ -59,13 +51,17 @@
 
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [tableSectionData count];
 }
 
+// For grouped tableview, customize the group title.
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+	return [[tableSectionData objectAtIndex:section] objectForKey:@"section_title"];
+}
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [[[tableSectionData objectAtIndex:section] objectForKey:@"rows"] count];
 }
 
 
@@ -79,66 +75,35 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	// Configure the cell.
-
+	cell.textLabel.text = [[[tableSectionData objectAtIndex:indexPath.section] objectForKey:@"rows"] objectAtIndex:indexPath.row];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	UIViewController *detailViewController = nil;
+	
+	if (indexPath.section == kSectionSpringBoardTests)
+	{
+		if (indexPath.row == 0) {
+			// Default UIAnimation based SpringBoard
+			detailViewController = [[OpenSpringBoard alloc] initWithNibName:@"OpenSpringBoard" bundle:nil];
+		}
+	}
+	
+	if (detailViewController) {
+		self.title = @"";
+		
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
 }
-
 
 #pragma mark -
 #pragma mark Memory management
@@ -157,6 +122,7 @@
 
 
 - (void)dealloc {
+	[tableSectionData release];
     [super dealloc];
 }
 

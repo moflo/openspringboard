@@ -15,13 +15,43 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		910372701328775A001072DA /* OpenSpringBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103726F1328775A001072DA /* OpenSpringBoard.m */; };
+		9103727213287769001072DA /* OpenSpringBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9103727113287769001072DA /* OpenSpringBoard.xib */; };
+		9103727E13287838001072DA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103727D13287838001072DA /* QuartzCore.framework */; };
+		910372A61328798C001072DA /* tool_calendar_APR.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103728D1328798C001072DA /* tool_calendar_APR.png */; };
+		910372A71328798C001072DA /* tool_calendar_APR_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103728E1328798C001072DA /* tool_calendar_APR_ON.png */; };
+		910372A81328798C001072DA /* tool_calendar_AUG.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103728F1328798C001072DA /* tool_calendar_AUG.png */; };
+		910372A91328798C001072DA /* tool_calendar_AUG_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372901328798C001072DA /* tool_calendar_AUG_ON.png */; };
+		910372AA1328798C001072DA /* tool_calendar_DEC.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372911328798C001072DA /* tool_calendar_DEC.png */; };
+		910372AB1328798C001072DA /* tool_calendar_DEC_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372921328798C001072DA /* tool_calendar_DEC_ON.png */; };
+		910372AC1328798C001072DA /* tool_calendar_FEB.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372931328798C001072DA /* tool_calendar_FEB.png */; };
+		910372AD1328798C001072DA /* tool_calendar_FEB_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372941328798C001072DA /* tool_calendar_FEB_ON.png */; };
+		910372AE1328798C001072DA /* tool_calendar_JAN.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372951328798C001072DA /* tool_calendar_JAN.png */; };
+		910372AF1328798C001072DA /* tool_calendar_JAN_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372961328798C001072DA /* tool_calendar_JAN_ON.png */; };
+		910372B01328798C001072DA /* tool_calendar_JUL.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372971328798C001072DA /* tool_calendar_JUL.png */; };
+		910372B11328798C001072DA /* tool_calendar_JUL_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372981328798C001072DA /* tool_calendar_JUL_ON.png */; };
+		910372B21328798C001072DA /* tool_calendar_JUN.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372991328798C001072DA /* tool_calendar_JUN.png */; };
+		910372B31328798C001072DA /* tool_calendar_JUN_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103729A1328798C001072DA /* tool_calendar_JUN_ON.png */; };
+		910372B41328798C001072DA /* tool_calendar_MAR.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103729B1328798C001072DA /* tool_calendar_MAR.png */; };
+		910372B51328798C001072DA /* tool_calendar_MAR_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103729C1328798C001072DA /* tool_calendar_MAR_ON.png */; };
+		910372B61328798C001072DA /* tool_calendar_MAY.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103729D1328798C001072DA /* tool_calendar_MAY.png */; };
+		910372B71328798C001072DA /* tool_calendar_MAY_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103729E1328798C001072DA /* tool_calendar_MAY_ON.png */; };
+		910372B81328798C001072DA /* tool_calendar_NOV.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103729F1328798C001072DA /* tool_calendar_NOV.png */; };
+		910372B91328798C001072DA /* tool_calendar_NOV_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A01328798C001072DA /* tool_calendar_NOV_ON.png */; };
+		910372BA1328798C001072DA /* tool_calendar_OCT.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A11328798C001072DA /* tool_calendar_OCT.png */; };
+		910372BB1328798C001072DA /* tool_calendar_OCT_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A21328798C001072DA /* tool_calendar_OCT_ON.png */; };
+		910372BC1328798C001072DA /* tool_calendar_SEP.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A31328798C001072DA /* tool_calendar_SEP.png */; };
+		910372BD1328798C001072DA /* tool_calendar_SEP_ON.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A41328798C001072DA /* tool_calendar_SEP_ON.png */; };
+		910372BE1328798C001072DA /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A51328798C001072DA /* touch.png */; };
+		910372D413287D19001072DA /* Application_Icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372D213287D19001072DA /* Application_Icon_57.png */; };
+		910372D513287D19001072DA /* Application_Icon_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372D313287D19001072DA /* Application_Icon_128.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* openspringboardAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openspringboardAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* openspringboardAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openspringboardAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* openspringboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openspringboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* openSB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openSB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* openspringboard_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openspringboard_Prefix.pch; sourceTree = "<group>"; };
@@ -31,6 +61,37 @@
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* openspringboard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openspringboard-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9103726E1328775A001072DA /* OpenSpringBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenSpringBoard.h; sourceTree = "<group>"; };
+		9103726F1328775A001072DA /* OpenSpringBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenSpringBoard.m; sourceTree = "<group>"; };
+		9103727113287769001072DA /* OpenSpringBoard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OpenSpringBoard.xib; path = Resources/NIBs/OpenSpringBoard.xib; sourceTree = SOURCE_ROOT; };
+		9103727D13287838001072DA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9103728D1328798C001072DA /* tool_calendar_APR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_APR.png; sourceTree = "<group>"; };
+		9103728E1328798C001072DA /* tool_calendar_APR_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_APR_ON.png; sourceTree = "<group>"; };
+		9103728F1328798C001072DA /* tool_calendar_AUG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_AUG.png; sourceTree = "<group>"; };
+		910372901328798C001072DA /* tool_calendar_AUG_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_AUG_ON.png; sourceTree = "<group>"; };
+		910372911328798C001072DA /* tool_calendar_DEC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_DEC.png; sourceTree = "<group>"; };
+		910372921328798C001072DA /* tool_calendar_DEC_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_DEC_ON.png; sourceTree = "<group>"; };
+		910372931328798C001072DA /* tool_calendar_FEB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_FEB.png; sourceTree = "<group>"; };
+		910372941328798C001072DA /* tool_calendar_FEB_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_FEB_ON.png; sourceTree = "<group>"; };
+		910372951328798C001072DA /* tool_calendar_JAN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_JAN.png; sourceTree = "<group>"; };
+		910372961328798C001072DA /* tool_calendar_JAN_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_JAN_ON.png; sourceTree = "<group>"; };
+		910372971328798C001072DA /* tool_calendar_JUL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_JUL.png; sourceTree = "<group>"; };
+		910372981328798C001072DA /* tool_calendar_JUL_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_JUL_ON.png; sourceTree = "<group>"; };
+		910372991328798C001072DA /* tool_calendar_JUN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_JUN.png; sourceTree = "<group>"; };
+		9103729A1328798C001072DA /* tool_calendar_JUN_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_JUN_ON.png; sourceTree = "<group>"; };
+		9103729B1328798C001072DA /* tool_calendar_MAR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_MAR.png; sourceTree = "<group>"; };
+		9103729C1328798C001072DA /* tool_calendar_MAR_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_MAR_ON.png; sourceTree = "<group>"; };
+		9103729D1328798C001072DA /* tool_calendar_MAY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_MAY.png; sourceTree = "<group>"; };
+		9103729E1328798C001072DA /* tool_calendar_MAY_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_MAY_ON.png; sourceTree = "<group>"; };
+		9103729F1328798C001072DA /* tool_calendar_NOV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_NOV.png; sourceTree = "<group>"; };
+		910372A01328798C001072DA /* tool_calendar_NOV_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_NOV_ON.png; sourceTree = "<group>"; };
+		910372A11328798C001072DA /* tool_calendar_OCT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_OCT.png; sourceTree = "<group>"; };
+		910372A21328798C001072DA /* tool_calendar_OCT_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_OCT_ON.png; sourceTree = "<group>"; };
+		910372A31328798C001072DA /* tool_calendar_SEP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_SEP.png; sourceTree = "<group>"; };
+		910372A41328798C001072DA /* tool_calendar_SEP_ON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tool_calendar_SEP_ON.png; sourceTree = "<group>"; };
+		910372A51328798C001072DA /* touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch.png; sourceTree = "<group>"; };
+		910372D213287D19001072DA /* Application_Icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Application_Icon_57.png; sourceTree = "<group>"; };
+		910372D313287D19001072DA /* Application_Icon_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Application_Icon_128.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +102,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				9103727E13287838001072DA /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +116,7 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* openspringboardAppDelegate.h */,
 				1D3623250D0F684500981E51 /* openspringboardAppDelegate.m */,
+				910372731328776F001072DA /* OpenSpringBoard Default */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -61,7 +124,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* openspringboard.app */,
+				1D6058910D05DD3D006BFB54 /* openSB.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +156,7 @@
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* openspringboard-Info.plist */,
+				9103728C1328798C001072DA /* images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -100,11 +164,57 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9103727D13287838001072DA /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		910372731328776F001072DA /* OpenSpringBoard Default */ = {
+			isa = PBXGroup;
+			children = (
+				9103726E1328775A001072DA /* OpenSpringBoard.h */,
+				9103726F1328775A001072DA /* OpenSpringBoard.m */,
+				9103727113287769001072DA /* OpenSpringBoard.xib */,
+			);
+			name = "OpenSpringBoard Default";
+			sourceTree = "<group>";
+		};
+		9103728C1328798C001072DA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				910372D213287D19001072DA /* Application_Icon_57.png */,
+				910372D313287D19001072DA /* Application_Icon_128.png */,
+				9103728D1328798C001072DA /* tool_calendar_APR.png */,
+				9103728E1328798C001072DA /* tool_calendar_APR_ON.png */,
+				9103728F1328798C001072DA /* tool_calendar_AUG.png */,
+				910372901328798C001072DA /* tool_calendar_AUG_ON.png */,
+				910372911328798C001072DA /* tool_calendar_DEC.png */,
+				910372921328798C001072DA /* tool_calendar_DEC_ON.png */,
+				910372931328798C001072DA /* tool_calendar_FEB.png */,
+				910372941328798C001072DA /* tool_calendar_FEB_ON.png */,
+				910372951328798C001072DA /* tool_calendar_JAN.png */,
+				910372961328798C001072DA /* tool_calendar_JAN_ON.png */,
+				910372971328798C001072DA /* tool_calendar_JUL.png */,
+				910372981328798C001072DA /* tool_calendar_JUL_ON.png */,
+				910372991328798C001072DA /* tool_calendar_JUN.png */,
+				9103729A1328798C001072DA /* tool_calendar_JUN_ON.png */,
+				9103729B1328798C001072DA /* tool_calendar_MAR.png */,
+				9103729C1328798C001072DA /* tool_calendar_MAR_ON.png */,
+				9103729D1328798C001072DA /* tool_calendar_MAY.png */,
+				9103729E1328798C001072DA /* tool_calendar_MAY_ON.png */,
+				9103729F1328798C001072DA /* tool_calendar_NOV.png */,
+				910372A01328798C001072DA /* tool_calendar_NOV_ON.png */,
+				910372A11328798C001072DA /* tool_calendar_OCT.png */,
+				910372A21328798C001072DA /* tool_calendar_OCT_ON.png */,
+				910372A31328798C001072DA /* tool_calendar_SEP.png */,
+				910372A41328798C001072DA /* tool_calendar_SEP_ON.png */,
+				910372A51328798C001072DA /* touch.png */,
+			);
+			name = images;
+			path = Resources/images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +234,7 @@
 			);
 			name = openspringboard;
 			productName = openspringboard;
-			productReference = 1D6058910D05DD3D006BFB54 /* openspringboard.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* openSB.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -159,6 +269,34 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
+				9103727213287769001072DA /* OpenSpringBoard.xib in Resources */,
+				910372A61328798C001072DA /* tool_calendar_APR.png in Resources */,
+				910372A71328798C001072DA /* tool_calendar_APR_ON.png in Resources */,
+				910372A81328798C001072DA /* tool_calendar_AUG.png in Resources */,
+				910372A91328798C001072DA /* tool_calendar_AUG_ON.png in Resources */,
+				910372AA1328798C001072DA /* tool_calendar_DEC.png in Resources */,
+				910372AB1328798C001072DA /* tool_calendar_DEC_ON.png in Resources */,
+				910372AC1328798C001072DA /* tool_calendar_FEB.png in Resources */,
+				910372AD1328798C001072DA /* tool_calendar_FEB_ON.png in Resources */,
+				910372AE1328798C001072DA /* tool_calendar_JAN.png in Resources */,
+				910372AF1328798C001072DA /* tool_calendar_JAN_ON.png in Resources */,
+				910372B01328798C001072DA /* tool_calendar_JUL.png in Resources */,
+				910372B11328798C001072DA /* tool_calendar_JUL_ON.png in Resources */,
+				910372B21328798C001072DA /* tool_calendar_JUN.png in Resources */,
+				910372B31328798C001072DA /* tool_calendar_JUN_ON.png in Resources */,
+				910372B41328798C001072DA /* tool_calendar_MAR.png in Resources */,
+				910372B51328798C001072DA /* tool_calendar_MAR_ON.png in Resources */,
+				910372B61328798C001072DA /* tool_calendar_MAY.png in Resources */,
+				910372B71328798C001072DA /* tool_calendar_MAY_ON.png in Resources */,
+				910372B81328798C001072DA /* tool_calendar_NOV.png in Resources */,
+				910372B91328798C001072DA /* tool_calendar_NOV_ON.png in Resources */,
+				910372BA1328798C001072DA /* tool_calendar_OCT.png in Resources */,
+				910372BB1328798C001072DA /* tool_calendar_OCT_ON.png in Resources */,
+				910372BC1328798C001072DA /* tool_calendar_SEP.png in Resources */,
+				910372BD1328798C001072DA /* tool_calendar_SEP_ON.png in Resources */,
+				910372BE1328798C001072DA /* touch.png in Resources */,
+				910372D413287D19001072DA /* Application_Icon_57.png in Resources */,
+				910372D513287D19001072DA /* Application_Icon_128.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +310,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* openspringboardAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				910372701328775A001072DA /* OpenSpringBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +327,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = openspringboard_Prefix.pch;
 				INFOPLIST_FILE = "openspringboard-Info.plist";
-				PRODUCT_NAME = openspringboard;
+				PRODUCT_NAME = openSB;
 			};
 			name = Debug;
 		};
