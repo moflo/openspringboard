@@ -7,34 +7,36 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToolsIconView.h"
+
 
 #define MAX_ICON_POSITION 9
 
 @interface OpenSpringBoard : UIViewController  <UIGestureRecognizerDelegate> {
 	
-	IBOutlet UIView	*toolButtonOne, *toolButtonTwo, *toolButtonThree, *toolButtonFour, *toolButtonFive;
-	IBOutlet UIView	*toolButtonSix, *toolButtonSeven, *toolButtonEight, *toolButtonNine, *toolButtonTen;
-	IBOutlet UIImageView	*toolButtonEleven, *toolButtonTwelve, *toolButtonThirten, *toolButtonFourteen, *toolButtonFifteen;
+	IBOutlet UIImageView	*toolButtonOne;
 	
 	NSTimer *mainLoopTimer;
 	double startTime;
 	IBOutlet UILabel *fpsLabel;
 	
-	NSMutableArray *iconViews;									//<! Ordered array of icon views
-	CGPoint iconVerts[MAX_ICON_POSITION];						//<! Ordered array of icon positions (cpv)
-	BOOL isIconAnimating;										//<! State flag, indicates icons moving
-	int currentSelectedIcon;									//<! Index of selected (moving) icon +1
+	NSMutableArray *iconViews;									//!< Ordered array of icon views
+	IBOutlet ToolsIconView *toolIconView;						//!< IBFactory for standard icon view container
+	ToolsIconView *selectedIconView;							//!< Placeholder for selected icon view  
+	CGPoint iconVerts[MAX_ICON_POSITION];						//!< Ordered array of icon positions (cpv)
+	BOOL isIconAnimating;										//!< State flag, indicates icons moving
+	int currentSelectedIcon;									//!< Index of selected (moving) icon +1
 	
-	BOOL isUserMovingIcons;										//<! Enter icon move mode, make icons dance!
+	BOOL isUserMovingIcons;										//!< Enter icon move mode, make icons dance!
 	
 }
 - (IBAction) doToolButton:(id)sender;
 
-- (void) setupSpace;
-- (void) teardownSpace;
+- (void) buildIconViews;
+- (IBAction) launchTool:(id)sender;
+
 - (void) mainLoop:(NSTimer *)timer;
 - (void) showFPS:(double)dt;
-- (void) addNewSpriteFromView:(UIView *)uiview m:(float)m u:(float)u;
 - (void) setupIconCollisionMatrix;
 - (int) checkIconCollision:(float)dist;
 - (void) animateIconInsertPosition:(int)position;

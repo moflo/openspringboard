@@ -42,7 +42,7 @@ GetCurrentTime(void)
 
 - (IBAction) doneButton: (id)sender
 {
-	[self teardownSpace];
+	[mainLoopTimer invalidate];
 	[[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
@@ -55,7 +55,10 @@ GetCurrentTime(void)
 	gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor lightGrayColor] CGColor], nil];
 	[self.view.layer insertSublayer:gradient atIndex:0];
 	
-	[self setupIconCollisionMatrix];
+	[self buildIconViews];
+	toolButtonOne.hidden = YES;	
+
+	//[self setupIconCollisionMatrix];
 	currentSelectedIcon = 0;	// testing, indicate outside position
 		
 	mainLoopTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/30) target:self selector:@selector(mainLoop:) userInfo:nil repeats:YES];
@@ -91,12 +94,92 @@ GetCurrentTime(void)
     [super dealloc];
 }
 
-#pragma mark Physics Methods
+#pragma mark UIButton Methods
+
+- (IBAction) launchTool:(id)sender
+{
+	UIButton *button = (UIButton *)sender;
+	NSLog(@"OpenSpringBoard: launchTool=%d",button.tag);
+}
+
+#pragma mark Icon View Methods
+
+-(void) buildIconViews
+{
+	//! Method to programmatically build icon views
+	
+	// Create an array of icons programmatically
+#define addIcon(png,title,code) d = [NSDictionary dictionaryWithObjectsAndKeys:png,@"icon_png",title,@"icon_title",code,@"icon_code",nil]; [itemArray addObject:d];
+	
+	NSDictionary *d;
+	NSMutableArray *itemArray = [[[NSMutableArray alloc] initWithCapacity:18] autorelease];
+		
+	
+	addIcon(@"tool_calendar_JAN.png",@"January",@"1")
+	addIcon(@"tool_calendar_FEB.png",@"February",@"2")
+	addIcon(@"tool_calendar_MAR.png",@"March",@"3")
+	addIcon(@"tool_calendar_APR.png",@"April",@"4")
+	addIcon(@"tool_calendar_MAY.png",@"May",@"5")
+	
+	// Loop over all subviews (icons) and stuff into ordered array
+	iconViews = [[[NSMutableArray alloc] initWithCapacity:9] retain];
+	
+	for (NSDictionary *item in itemArray) {
+		[[NSBundle mainBundle] loadNibNamed:@"ToolsIconView" owner:self options:nil];
+		ToolsIconView *iconView = toolIconView;
+		toolIconView = nil;			
+		UIImage *i = [UIImage imageNamed:[item objectForKey:@"icon_png"]];
+		[iconView.toolIconButton setImage:i forState:UIControlStateNormal];
+		iconView.toolIconButton.tag = [(NSString *)[item objectForKey:@"icon_code"] intValue];
+		[iconView.toolIconButton addTarget:self action:@selector(launchTool:) forControlEvents:UIControlEventTouchUpInside];
+		iconView.toolIconButton.containerView = self.view;
+		iconView.badgeCountLabel.text = @"00";
+		iconView.badgeCountLabel.hidden = ([[item objectForKey:@"icon_code"] intValue] == 2 ? NO : YES);
+		iconView.toolLabel.text = [item objectForKey:@"icon_title"];
+		//[pageOne addSubview:iconView];
+		[iconViews addObject:iconView];
+		
+	}
+	
+	// Build static matix (linear array) of icon positions and bounding circles
+#define cpv(x,y) CGPointMake(x,y)
+	int num = MAX_ICON_POSITION, xl=55, xm=160, xr=265, yt=74, ym=179, yb=283;
+	CGPoint verts[] = {
+		cpv(xl,yt), cpv(xm,yt), cpv(xr,yt),
+		cpv(xl,ym), cpv(xm,ym), cpv(xr,ym),
+		cpv(xl,yb), cpv(xm,yb), cpv(xr,yb),
+	};
+	
+	// Stuff verts into global
+	for (int j=0; j<num; j++) {
+		iconVerts[j] = verts[j];		
+	}
+	
+	// Loop over all icon views & move to position as per the vert matrix
+	int i=0, page=1;
+	for (UIView *view in iconViews) {
+		if (i<num) {
+			if (page==1) {
+				[self.view addSubview:view];			// [pageOne addSubview:view];
+			}
+			else {
+				[self.view addSubview:view];			// [pageTwo addSubview:view];
+			}
+			//NSLog(@"view.tag=%d (%.2f,%.2f)",i,iconVerts[i].x,iconVerts[i].y);
+			view.center = CGPointMake(iconVerts[i].x,iconVerts[i].y);
+		}
+		if (++i == 9) {
+			i=0;	// Reset for 9 icons per page
+			page++;
+		}
+	}
+	
+}
 
 - (void) setupIconCollisionMatrix
 //! Create linear array of icon positions, and bounding circles to test for collision
 {
-
+/***
 	// Loop over all subviews (icons) and stuff into ordered array
 	iconViews = [[[NSMutableArray alloc] initWithCapacity:9] retain];
 	for (UIView *view in [self.view subviews]) {
@@ -129,19 +212,9 @@ GetCurrentTime(void)
 	}
 	
 	isIconAnimating = NO;		// Flag to signal animation
+***/
 }
 
-- (void) setupSpace
-//! Inherited initialization method. Set up Chipmunk physics engine.
-{
-	
-}
-
-- (void) addNewSpriteFromView:(UIView *)uiview m:(float)m u:(float)u
-//! Add sprites to the scene in at a specific location (x,y)
-{
-	
-}
 
 - (void) mainLoop:(NSTimer *)timer {
 	//! The game's mainLoop, an NSTimer selector. Wait for player to place piece on the board, when the
@@ -170,6 +243,11 @@ GetCurrentTime(void)
 {
 #define	testPointInCircle(p1,p2,r1) (sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)) <= (r1))
 
+	if (!isUserMovingIcons) {
+		// Animation done
+		return 0;
+	}
+	
 	for (int i=0; i<[iconViews count]; i++) {
 		UIView *view = [iconViews objectAtIndex:i];
 		if ([view class] != [NSNull class]) {
@@ -177,7 +255,7 @@ GetCurrentTime(void)
 			CGPoint p2 = cpv(iconVerts[i].x,iconVerts[i].y);
 			int test = testPointInCircle(p1,p2,dist);
 			if (test) {
-				NSLog(@"[%d] view.tag=%d state=%@ dist=%.2f",i,view.tag,(test?@"IN":@"OUT"),sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)));
+				NSLog(@"checkIconCollision: [%d] view.tag=%d state=%@ dist=%.2f",i,view.tag,(test?@"IN":@"OUT"),sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y)));
 				return i+1;
 			}
 		}
@@ -238,12 +316,6 @@ GetCurrentTime(void)
 	}
 }
 
-- (void) teardownSpace {
-	//! Remove the physics objects
-	
-	[mainLoopTimer invalidate];
-
-}
 
 - (void) setIconAnimation:(BOOL)isAnimating
 {
@@ -297,15 +369,29 @@ GetCurrentTime(void)
 		// User already moving so do nothing
 		return;
 	}
-	if (gestureRecognizer.view == toolButtonOne) {
-		NSLog(@"longPressDetected: toolButtonOne");
-		[self setIconAnimation:TRUE];
-		isUserMovingIcons = YES;
-	}
-	if (gestureRecognizer.view == toolButtonTwo) {
-		NSLog(@"longPressDetected: toolButtonOne");
-		[self setIconAnimation:TRUE];
-		isUserMovingIcons = YES;
+	
+	for (int i=0; i<[iconViews count]; i++) {
+		UIView *view = [iconViews objectAtIndex:i];
+		//! Loop over all the iconViews, set up long press gesture recognizer
+		if ([view class] != [NSNull class]) {
+			ToolsIconView *toolView = (ToolsIconView *)view;
+			if (gestureRecognizer.view == toolView.toolIconButton) {
+				NSLog(@"longPressDetected: toolButtonOne");
+				[self setIconAnimation:TRUE];
+				isUserMovingIcons = YES;
+				toolButtonOne.image = [toolView.toolIconButton imageForState:UIControlStateNormal];
+				toolButtonOne.center = toolView.center;
+				toolButtonOne.hidden = NO;
+				toolView.hidden = YES;		
+				CGAffineTransform transform = CGAffineTransformMakeScale(1.5,1.5);
+				toolButtonOne.transform = transform;
+				
+				// Save selected iconView, replace it with NSNull in view array
+				selectedIconView = toolView;
+				[iconViews replaceObjectAtIndex:i withObject:[NSNull null]];
+
+			}
+		}
 	}
 }
 
@@ -313,50 +399,42 @@ GetCurrentTime(void)
 	// Attached UIGesture recognizers to the timeLineView
 	UILongPressGestureRecognizer *recognizer;
     
-    recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
-	recognizer.minimumPressDuration = 1.0f;	// default is 0.4f
-    [toolButtonOne addGestureRecognizer:recognizer];
-    recognizer.delegate = self;
-    [recognizer release];
-	
-    recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
-	recognizer.minimumPressDuration = 1.0f;	// default is 0.4f
-    [toolButtonTwo addGestureRecognizer:recognizer];
-    recognizer.delegate = self;
-    [recognizer release];
+	for (UIView *view in iconViews) {
+		//! Loop over all the iconViews, set up long press gesture recognizer
+		if ([view class] != [NSNull class]) {
+			recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
+			recognizer.minimumPressDuration = 1.0f;	// default is 0.4f
+			ToolsIconView *toolView = (ToolsIconView *)view;
+			[toolView.toolIconButton addGestureRecognizer:recognizer];
+			recognizer.delegate = self;
+			[recognizer release];
+		}
+	}
 	
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
 	
-    // If gesture was within bounds of timelineView then allow
-    if ((touch.view == toolButtonOne)) {
-        return YES;
-    }
-    if ((touch.view == toolButtonTwo)) {
-        return YES;
-    }
+    // If gesture was within bounds of iconView button then allow
+	for (UIView *view in iconViews) {
+		//! Loop over all the iconView, determine if a long press occured within a button
+		if ([view class] != [NSNull class]) {
+			// Make sure it's not a NSNull class
+			ToolsIconView *toolView = (ToolsIconView *)view;
+			if ((touch.view == toolView.toolIconButton)) {
+				return YES;
+			}
+		}
+	}
     return NO;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 //! Respond to touches. Move a uiview if it's being touched
 {
-	UITouch *touch = [touches anyObject];	
+	//UITouch *touch = [touches anyObject];	
 	//CGPoint location = [touch locationInView: [touch view]];
 	
-	if ([touch view] == toolButtonOne) {
-		// Change to active shape
-		//NSLog(@"touchesBegan: toolButtonOne");
-		CGAffineTransform transform = CGAffineTransformMakeScale(2.0,2.0);
-		toolButtonOne.transform = transform;
-	}
-	if ([touch view] == toolButtonTwo) {
-		// Change to active shape
-		//NSLog(@"touchesBegan: toolButtonOne");
-		CGAffineTransform transform = CGAffineTransformMakeScale(2.0,2.0);
-		toolButtonOne.transform = transform;
-	}
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -384,15 +462,22 @@ GetCurrentTime(void)
 		isUserMovingIcons = NO;
 		CGAffineTransform transform = CGAffineTransformMakeScale(1.0,1.0);
 		toolButtonOne.transform = transform;
+		toolButtonOne.hidden = YES;
+
+		// Save selected iconView, replace NSNull in view array
+		selectedIconView.center = iconVerts[currentSelectedIcon-1];
+		[iconViews replaceObjectAtIndex:currentSelectedIcon-1 withObject:selectedIconView];
+
 		for (int i=0; i<[iconViews count]; i++) {
 			UIView *view = [iconViews objectAtIndex:i];
 			if ([view class] != [NSNull class]) {
-				// Loop over all icon views, add "dancing" animation to each
+				// Loop over all icon views, remove "dancing" animation to each
 				[UIView animateWithDuration:0.2 
 									  delay:0.0 
 									options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionCurveEaseIn
 								 animations:^{
 									 view.alpha = 1.0;
+									 view.hidden = NO;
 									 view.transform = CGAffineTransformIdentity;	
 								 }
 								 completion:^(BOOL finished){
@@ -400,7 +485,10 @@ GetCurrentTime(void)
 								 }];
 			}
 		}
+		
+		
 	}
 }
 	
+
 @end
