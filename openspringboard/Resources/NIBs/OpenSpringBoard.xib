@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="21"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -116,11 +116,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">toolButtonOne</string>
+						<string key="label">toolButtonSelected</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="112801731"/>
 					</object>
-					<int key="connectionID">22</int>
+					<int key="connectionID">28</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -206,7 +206,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">27</int>
+			<int key="maxID">28</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -251,41 +251,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>fpsLabel</string>
-							<string>toolButtonEight</string>
-							<string>toolButtonEleven</string>
-							<string>toolButtonFifteen</string>
-							<string>toolButtonFive</string>
-							<string>toolButtonFour</string>
-							<string>toolButtonFourteen</string>
-							<string>toolButtonNine</string>
-							<string>toolButtonOne</string>
-							<string>toolButtonSeven</string>
-							<string>toolButtonSix</string>
-							<string>toolButtonTen</string>
-							<string>toolButtonThirten</string>
-							<string>toolButtonThree</string>
-							<string>toolButtonTwelve</string>
-							<string>toolButtonTwo</string>
+							<string>toolButtonSelected</string>
 							<string>toolIconView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
-							<string>UIView</string>
 							<string>UIImageView</string>
-							<string>UIImageView</string>
-							<string>UIView</string>
-							<string>UIView</string>
-							<string>UIImageView</string>
-							<string>UIView</string>
-							<string>UIView</string>
-							<string>UIView</string>
-							<string>UIView</string>
-							<string>UIView</string>
-							<string>UIImageView</string>
-							<string>UIView</string>
-							<string>UIImageView</string>
-							<string>UIView</string>
 							<string>ToolsIconView</string>
 						</object>
 					</object>
@@ -294,21 +266,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>fpsLabel</string>
-							<string>toolButtonEight</string>
-							<string>toolButtonEleven</string>
-							<string>toolButtonFifteen</string>
-							<string>toolButtonFive</string>
-							<string>toolButtonFour</string>
-							<string>toolButtonFourteen</string>
-							<string>toolButtonNine</string>
-							<string>toolButtonOne</string>
-							<string>toolButtonSeven</string>
-							<string>toolButtonSix</string>
-							<string>toolButtonTen</string>
-							<string>toolButtonThirten</string>
-							<string>toolButtonThree</string>
-							<string>toolButtonTwelve</string>
-							<string>toolButtonTwo</string>
+							<string>toolButtonSelected</string>
 							<string>toolIconView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -318,64 +276,8 @@
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonEight</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonEleven</string>
+								<string key="name">toolButtonSelected</string>
 								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonFifteen</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonFive</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonFour</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonFourteen</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonNine</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonOne</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonSeven</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonSix</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonTen</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonThirten</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonThree</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonTwelve</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">toolButtonTwo</string>
-								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">toolIconView</string>
@@ -402,7 +304,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabelOvalBadge</string>
-							<string>UIButton</string>
+							<string>UIToolIconButton</string>
 							<string>UILabel</string>
 						</object>
 					</object>
@@ -422,7 +324,7 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">toolIconButton</string>
-								<string key="candidateClassName">UIButton</string>
+								<string key="candidateClassName">UIToolIconButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">toolLabel</string>
@@ -438,6 +340,11 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">UILabelOvalBadge</string>
 					<string key="superclassName">UILabel</string>
+					<reference key="sourceIdentifier" ref="528232343"/>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIToolIconButton</string>
+					<string key="superclassName">UIButton</string>
 					<reference key="sourceIdentifier" ref="528232343"/>
 				</object>
 			</object>

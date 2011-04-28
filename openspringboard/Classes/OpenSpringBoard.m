@@ -55,11 +55,12 @@ GetCurrentTime(void)
 	gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor lightGrayColor] CGColor], nil];
 	[self.view.layer insertSublayer:gradient atIndex:0];
 	
+	maxIconPerPage = 9;		// default
 	[self buildIconViews];
-	toolButtonOne.hidden = YES;	
+	toolButtonSelected.hidden = YES;	
 
 	//[self setupIconCollisionMatrix];
-	currentSelectedIcon = 0;	// testing, indicate outside position
+	toolButtonSelectedIndex = 0;	// testing, indicate outside position
 		
 	mainLoopTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/30) target:self selector:@selector(mainLoop:) userInfo:nil repeats:YES];
 
@@ -168,12 +169,27 @@ GetCurrentTime(void)
 			//NSLog(@"view.tag=%d (%.2f,%.2f)",i,iconVerts[i].x,iconVerts[i].y);
 			view.center = CGPointMake(iconVerts[i].x,iconVerts[i].y);
 		}
-		if (++i == 9) {
-			i=0;	// Reset for 9 icons per page
+		if (++i == maxIconPerPage) {
+			i=0;	// Reset for 9 icons per page, default
 			page++;
 		}
 	}
 	
+}
+
+- (void) listIconOrder
+{
+	//! Method to list icon info, sequentially
+	for (UIView *view in iconViews) {
+		//! Loop over all the iconViews, set up long press gesture recognizer
+		if ([view class] == [ToolsIconView class]) {
+			ToolsIconView *toolView = (ToolsIconView *)view;
+			NSLog(@"%@ - %d", toolView.toolLabel.text, toolView.toolIconButton.tag);
+		}			
+		if ([view class] == [NSNull class]) {
+			NSLog(@"Null");
+		}			
+	}
 }
 
 - (void) setupIconCollisionMatrix
@@ -250,8 +266,8 @@ GetCurrentTime(void)
 	
 	for (int i=0; i<[iconViews count]; i++) {
 		UIView *view = [iconViews objectAtIndex:i];
-		if ([view class] != [NSNull class]) {
-			CGPoint p1 = toolButtonOne.center;
+		if ([view class] == [ToolsIconView class]) {
+			CGPoint p1 = toolButtonSelected.center;
 			CGPoint p2 = cpv(iconVerts[i].x,iconVerts[i].y);
 			int test = testPointInCircle(p1,p2,dist);
 			if (test) {
@@ -268,13 +284,15 @@ GetCurrentTime(void)
 //! Start animation sequence to insert icon into view matrix at new position
 {
 	// Remove icon from old position
-	if (currentSelectedIcon) {
-		[iconViews removeObjectAtIndex:currentSelectedIcon-1];
+	if (toolButtonSelectedIndex) {
+		NSLog(@"animateIconInsertPosition: remove old NSNull at %d",toolButtonSelectedIndex);
+		[iconViews removeObjectAtIndex:toolButtonSelectedIndex-1];
 	}
 	
 	// Insert icon into new position
+	NSLog(@"animateIconInsertPosition: insert new NSNull at %d",position);
 	[iconViews insertObject:[NSNull null] atIndex:position-1];
-	currentSelectedIcon = position;
+	toolButtonSelectedIndex = position;
 
 	// Move icons to new positions
 	[UIView beginAnimations:@"MoveIcons" context:NULL];
@@ -284,7 +302,7 @@ GetCurrentTime(void)
 
 	for (int i=0; i<[iconViews count]; i++) {
 		UIView *view = [iconViews objectAtIndex:i];
-		if ([view class] != [NSNull class]) {
+		if ([view class] == [ToolsIconView class]) {
 			NSLog(@"animate view.tag=%d (%.2f,%.2f)",view.tag,iconVerts[i].x,iconVerts[i].y);
 			view.center = CGPointMake(iconVerts[i].x,iconVerts[i].y);
 		}
@@ -299,6 +317,7 @@ GetCurrentTime(void)
 //! Animation completed, start the physic main loop again
 {
 	NSLog(@"AnimationDone");
+	[self listIconOrder];	// diagnostic
 	isIconAnimating = NO;
 }
 
@@ -327,7 +346,7 @@ GetCurrentTime(void)
 	
 	for (int i=0; i<[iconViews count]; i++) {
 		UIView *view = [iconViews objectAtIndex:i];
-		if ([view class] != [NSNull class]) {
+		if ([view class] == [ToolsIconView class]) {
 			// Loop over all icon views, add "dancing" animation to each
 #define kAnimationRotateDeg 6.0
 #define kAnimationTranslateX 1.0
@@ -372,19 +391,27 @@ GetCurrentTime(void)
 	
 	for (int i=0; i<[iconViews count]; i++) {
 		UIView *view = [iconViews objectAtIndex:i];
-		//! Loop over all the iconViews, set up long press gesture recognizer
-		if ([view class] != [NSNull class]) {
+		//! Loop over all the iconViews, find which icon button was pressed, start to move it
+		if ([view class] == [ToolsIconView class]) {
 			ToolsIconView *toolView = (ToolsIconView *)view;
 			if (gestureRecognizer.view == toolView.toolIconButton) {
-				NSLog(@"longPressDetected: toolButtonOne");
+				NSLog(@"longPressDetected: toolButtonSelected");
+				toolButtonSelectedIndex = i+1;	// 1 offset on index, visual reference
 				[self setIconAnimation:TRUE];
 				isUserMovingIcons = YES;
-				toolButtonOne.image = [toolView.toolIconButton imageForState:UIControlStateNormal];
-				toolButtonOne.center = toolView.center;
-				toolButtonOne.hidden = NO;
 				toolView.hidden = YES;		
+				
+				toolButtonSelected.image = [toolView.toolIconButton imageForState:UIControlStateNormal];
+				toolButtonSelected.center = toolView.center;
+				[self.view bringSubviewToFront:toolButtonSelected];
+				[UIView beginAnimations:@"RevealToolButtonSelected" context:NULL];
+				[UIView setAnimationDelegate:self];
+				[UIView setAnimationDidStopSelector:@selector(animationDone)];
+				[UIView setAnimationDuration:0.25];
+				toolButtonSelected.hidden = NO;
 				CGAffineTransform transform = CGAffineTransformMakeScale(1.5,1.5);
-				toolButtonOne.transform = transform;
+				toolButtonSelected.transform = transform;
+				[UIView commitAnimations];
 				
 				// Save selected iconView, replace it with NSNull in view array
 				selectedIconView = toolView;
@@ -395,19 +422,22 @@ GetCurrentTime(void)
 	}
 }
 
+
 - (void) setupGestureRecognition {
 	// Attached UIGesture recognizers to the timeLineView
 	UILongPressGestureRecognizer *recognizer;
-    
+	
 	for (UIView *view in iconViews) {
 		//! Loop over all the iconViews, set up long press gesture recognizer
-		if ([view class] != [NSNull class]) {
+		if ([view class] == [ToolsIconView class]) {
+			ToolsIconView *toolView = (ToolsIconView *)view;
+			
 			recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
 			recognizer.minimumPressDuration = 1.0f;	// default is 0.4f
-			ToolsIconView *toolView = (ToolsIconView *)view;
 			[toolView.toolIconButton addGestureRecognizer:recognizer];
 			recognizer.delegate = self;
 			[recognizer release];
+			
 		}
 	}
 	
@@ -418,7 +448,7 @@ GetCurrentTime(void)
     // If gesture was within bounds of iconView button then allow
 	for (UIView *view in iconViews) {
 		//! Loop over all the iconView, determine if a long press occured within a button
-		if ([view class] != [NSNull class]) {
+		if ([view class] == [ToolsIconView class]) {
 			// Make sure it's not a NSNull class
 			ToolsIconView *toolView = (ToolsIconView *)view;
 			if ((touch.view == toolView.toolIconButton)) {
@@ -432,6 +462,8 @@ GetCurrentTime(void)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 //! Respond to touches. Move a uiview if it's being touched
 {
+	NSLog(@"touchesBegan: toolButtonSelectedIndex=%d",toolButtonSelectedIndex);
+	
 	//UITouch *touch = [touches anyObject];	
 	//CGPoint location = [touch locationInView: [touch view]];
 	
@@ -440,37 +472,42 @@ GetCurrentTime(void)
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 //! Respond to touches. Move a uiview if it's being touched
 {
+	NSLog(@"touchesMoved: toolButtonSelectedIndex=%d",toolButtonSelectedIndex);
+	
 	UITouch *touch = [touches anyObject];	
 	CGPoint location = [touch locationInView:self.view];
-	
-	if ([touch view] == toolButtonOne) {
-		toolButtonOne.center = CGPointMake(location.x, location.y);	// 47 = height of navigation bar
-		//NSLog(@"touchesMoved: toolButtonOne (%2.f, %2.f)", location.x, location.y);
+		
+	if ([touch view] == toolButtonSelected) {
+		toolButtonSelected.center = CGPointMake(location.x, location.y);	// 47 = height of navigation bar
+		//NSLog(@"touchesMoved: toolButtonSelected (%2.f, %2.f)", location.x, location.y);
 	}
+	
 }
 
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 //! Respond to touches. Move a uiview if it's being touched
 {
+	NSLog(@"touchesEnded: toolButtonSelectedIndex=%d",toolButtonSelectedIndex);
+	
 	UITouch *touch = [touches anyObject];	
 	//CGPoint location = [touch locationInView: [touch view]];
 	
-	if ([touch view] == toolButtonOne) {
+	if ([touch view] == toolButtonSelected) {
 		// Change back to dynamic shape
-		NSLog(@"touchesEnded: toolButtonOne");
+		NSLog(@"touchesEnded: toolButtonSelected");
 		isUserMovingIcons = NO;
 		CGAffineTransform transform = CGAffineTransformMakeScale(1.0,1.0);
-		toolButtonOne.transform = transform;
-		toolButtonOne.hidden = YES;
+		toolButtonSelected.transform = transform;
+		toolButtonSelected.hidden = YES;
 
 		// Save selected iconView, replace NSNull in view array
-		selectedIconView.center = iconVerts[currentSelectedIcon-1];
-		[iconViews replaceObjectAtIndex:currentSelectedIcon-1 withObject:selectedIconView];
+		selectedIconView.center = iconVerts[toolButtonSelectedIndex-1];
+		[iconViews replaceObjectAtIndex:toolButtonSelectedIndex-1 withObject:selectedIconView];
 
 		for (int i=0; i<[iconViews count]; i++) {
 			UIView *view = [iconViews objectAtIndex:i];
-			if ([view class] != [NSNull class]) {
+			if ([view class] == [ToolsIconView class]) {
 				// Loop over all icon views, remove "dancing" animation to each
 				[UIView animateWithDuration:0.2 
 									  delay:0.0 
@@ -485,8 +522,8 @@ GetCurrentTime(void)
 								 }];
 			}
 		}
-		
-		
+				
+		[self listIconOrder];
 	}
 }
 	

@@ -45,6 +45,8 @@
 		910372BE1328798C001072DA /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372A51328798C001072DA /* touch.png */; };
 		910372D413287D19001072DA /* Application_Icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372D213287D19001072DA /* Application_Icon_57.png */; };
 		910372D513287D19001072DA /* Application_Icon_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 910372D313287D19001072DA /* Application_Icon_128.png */; };
+		915D0C1D13688269002E314C /* ToolsIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915D0C1C13688269002E314C /* ToolsIconView.m */; };
+		915D0C391368841E002E314C /* ToolsIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915D0C381368841E002E314C /* ToolsIconView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,9 @@
 		910372A51328798C001072DA /* touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch.png; sourceTree = "<group>"; };
 		910372D213287D19001072DA /* Application_Icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Application_Icon_57.png; sourceTree = "<group>"; };
 		910372D313287D19001072DA /* Application_Icon_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Application_Icon_128.png; sourceTree = "<group>"; };
+		915D0C1B13688269002E314C /* ToolsIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolsIconView.h; sourceTree = "<group>"; };
+		915D0C1C13688269002E314C /* ToolsIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolsIconView.m; sourceTree = "<group>"; };
+		915D0C381368841E002E314C /* ToolsIconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ToolsIconView.xib; path = Resources/NIBs/ToolsIconView.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +183,9 @@
 				9103726E1328775A001072DA /* OpenSpringBoard.h */,
 				9103726F1328775A001072DA /* OpenSpringBoard.m */,
 				9103727113287769001072DA /* OpenSpringBoard.xib */,
+				915D0C1B13688269002E314C /* ToolsIconView.h */,
+				915D0C1C13688269002E314C /* ToolsIconView.m */,
+				915D0C381368841E002E314C /* ToolsIconView.xib */,
 			);
 			name = "OpenSpringBoard Default";
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 				910372BE1328798C001072DA /* touch.png in Resources */,
 				910372D413287D19001072DA /* Application_Icon_57.png in Resources */,
 				910372D513287D19001072DA /* Application_Icon_128.png in Resources */,
+				915D0C391368841E002E314C /* ToolsIconView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +320,7 @@
 				1D3623260D0F684500981E51 /* openspringboardAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
 				910372701328775A001072DA /* OpenSpringBoard.m in Sources */,
+				915D0C1D13688269002E314C /* ToolsIconView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

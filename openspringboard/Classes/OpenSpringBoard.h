@@ -14,7 +14,7 @@
 
 @interface OpenSpringBoard : UIViewController  <UIGestureRecognizerDelegate> {
 	
-	IBOutlet UIImageView	*toolButtonOne;
+	IBOutlet UIImageView	*toolButtonSelected;
 	
 	NSTimer *mainLoopTimer;
 	double startTime;
@@ -24,8 +24,9 @@
 	IBOutlet ToolsIconView *toolIconView;						//!< IBFactory for standard icon view container
 	ToolsIconView *selectedIconView;							//!< Placeholder for selected icon view  
 	CGPoint iconVerts[MAX_ICON_POSITION];						//!< Ordered array of icon positions (cpv)
+	int maxIconPerPage;											//!< Max number of icons shown per page
 	BOOL isIconAnimating;										//!< State flag, indicates icons moving
-	int currentSelectedIcon;									//!< Index of selected (moving) icon +1
+	int toolButtonSelectedIndex;									//!< Index of selected (moving) icon +1
 	
 	BOOL isUserMovingIcons;										//!< Enter icon move mode, make icons dance!
 	
@@ -34,6 +35,7 @@
 
 - (void) buildIconViews;
 - (IBAction) launchTool:(id)sender;
+- (void) listIconOrder;
 
 - (void) mainLoop:(NSTimer *)timer;
 - (void) showFPS:(double)dt;
