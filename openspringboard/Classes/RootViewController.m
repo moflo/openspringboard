@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "OpenSpringBoard.h"
+#import "OpenSpringBoardVC.h"
 
 
 @implementation RootViewController
@@ -93,7 +93,7 @@
 	{
 		if (indexPath.row == 0) {
 			// Default UIAnimation based SpringBoard
-			detailViewController = [[OpenSpringBoard alloc] initWithNibName:@"OpenSpringBoard" bundle:nil];
+			detailViewController = [[OpenSpringBoardVC alloc] initWithNibName:@"OpenSpringBoardVC" bundle:nil];
 		}
 	}
 	

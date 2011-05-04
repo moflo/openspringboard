@@ -12,6 +12,9 @@
 
 #define MAX_ICON_POSITION 9
 
+@protocol OpenSpringBoardDelegate;
+
+
 @interface OpenSpringBoard : UIViewController  <UIGestureRecognizerDelegate> {
 	
 	IBOutlet UIImageView	*toolButtonSelected;
@@ -30,12 +33,17 @@
 	
 	BOOL isUserMovingIcons;										//!< Enter icon move mode, make icons dance!
 	
+	id <OpenSpringBoardDelegate> delegate;						//!< Delegate declaration
+
 }
+@property (nonatomic,assign) id <OpenSpringBoardDelegate> delegate;
+
 - (IBAction) doToolButton:(id)sender;
 
 - (void) buildIconViews;
 - (IBAction) launchTool:(id)sender;
 - (void) listIconOrder;
+- (NSMutableArray *) createOrderedIconDictionaryArray;
 
 - (void) mainLoop:(NSTimer *)timer;
 - (void) showFPS:(double)dt;
@@ -48,3 +56,14 @@
 - (void) setIconAnimation:(BOOL)isAnimating;
 
 @end
+
+@protocol OpenSpringBoardDelegate <NSObject>
+@required
+- (NSMutableArray *) openSringBoardLoadIconArray:(OpenSpringBoard *)openSringBoardVC iconPageLimit:(int *)numIcons;
+@optional
+- (void) openSringBoardIconPress:(OpenSpringBoard *)openSringBoardVC iconSelectedTag:(int)iconTag;
+- (void) openSringBoardDidReorderIcons:(OpenSpringBoard *)openSringBoardVC iconArray:(NSMutableArray *)iconArray;
+- (void) openSringBoardVC:(OpenSpringBoard *)openSringBoardVC iconDeletedTag:(int)iconTag;
+- (void) setIconTag:(int)tag badgeText:(NSString *)badgeText; // should this be a callback or an interface method?
+@end
+

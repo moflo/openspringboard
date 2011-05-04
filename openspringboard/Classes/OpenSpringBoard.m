@@ -24,26 +24,13 @@ GetCurrentTime(void)
 
 @implementation OpenSpringBoard
 
+@synthesize delegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		//! Custom initialization to add logo image
-		self.title = @"OpenSpringBoard";
-		
-		UIBarButtonItem *modalButtonDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-																						 target:self
-																						 action:@selector(doneButton:)];
-		
-		self.navigationItem.rightBarButtonItem = modalButtonDone;
-		[modalButtonDone release];
-		
+		//! Custom initialization to add logo image		
 	}
 	return self;
-}
-
-- (IBAction) doneButton: (id)sender
-{
-	[mainLoopTimer invalidate];
-	[[self navigationController] popToRootViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad {
@@ -88,6 +75,8 @@ GetCurrentTime(void)
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+
+	[mainLoopTimer invalidate];
 }
 
 
@@ -100,7 +89,11 @@ GetCurrentTime(void)
 - (IBAction) launchTool:(id)sender
 {
 	UIButton *button = (UIButton *)sender;
-	NSLog(@"OpenSpringBoard: launchTool=%d",button.tag);
+	//NSLog(@"OpenSpringBoard: launchTool=%d",button.tag);
+	if([delegate respondsToSelector:@selector(openSringBoardIconPress:iconSelectedTag:)]) {
+		[delegate openSringBoardIconPress:self iconSelectedTag:button.tag];
+	}
+	
 }
 
 #pragma mark Icon View Methods
@@ -109,18 +102,26 @@ GetCurrentTime(void)
 {
 	//! Method to programmatically build icon views
 	
+	/*** Refactor to delegate method
 	// Create an array of icons programmatically
 #define addIcon(png,title,code) d = [NSDictionary dictionaryWithObjectsAndKeys:png,@"icon_png",title,@"icon_title",code,@"icon_code",nil]; [itemArray addObject:d];
 	
 	NSDictionary *d;
 	NSMutableArray *itemArray = [[[NSMutableArray alloc] initWithCapacity:18] autorelease];
 		
-	
 	addIcon(@"tool_calendar_JAN.png",@"January",@"1")
 	addIcon(@"tool_calendar_FEB.png",@"February",@"2")
 	addIcon(@"tool_calendar_MAR.png",@"March",@"3")
 	addIcon(@"tool_calendar_APR.png",@"April",@"4")
 	addIcon(@"tool_calendar_MAY.png",@"May",@"5")
+	
+	***/
+	
+	NSMutableArray *itemArray;	// Array of dictionary items, describing icon title, image, and tag
+	
+	if([delegate respondsToSelector:@selector(openSringBoardLoadIconArray:iconPageLimit:)]) {
+		itemArray = [delegate openSringBoardLoadIconArray:self iconPageLimit:&maxIconPerPage];
+	}
 	
 	// Loop over all subviews (icons) and stuff into ordered array
 	iconViews = [[[NSMutableArray alloc] initWithCapacity:9] retain];
@@ -190,6 +191,29 @@ GetCurrentTime(void)
 			NSLog(@"Null");
 		}			
 	}
+}
+
+- (NSMutableArray *) createOrderedIconDictionaryArray
+{
+	//! Method to create an ordered array of icon dictionaries, after the user re-arranges the icons
+#define addIcon(png,title,code) d = [NSDictionary dictionaryWithObjectsAndKeys:png,@"icon_png",title,@"icon_title",code,@"icon_code",nil]; [itemArray addObject:d];
+	
+	NSDictionary *d;
+	
+	NSMutableArray *itemArray = [[[NSMutableArray alloc] initWithCapacity:18] autorelease];
+
+	for (UIView *view in iconViews) {
+		//! Loop over all the iconViews, set up long press gesture recognizer
+		if ([view class] == [ToolsIconView class]) {
+			ToolsIconView *toolView = (ToolsIconView *)view;
+			NSLog(@"%@ - %d", toolView.toolLabel.text, toolView.toolIconButton.tag);
+			NSString *tagString = [NSString stringWithFormat:@"%d",toolView.toolIconButton.tag];
+			addIcon(@"tool_calendar_JAN.png",toolView.toolLabel.text,tagString)
+		}			
+	}
+	
+	return itemArray;
+	
 }
 
 - (void) setupIconCollisionMatrix
@@ -524,6 +548,11 @@ GetCurrentTime(void)
 		}
 				
 		[self listIconOrder];
+
+		//if([delegate respondsToSelector:@selector(openSringBoardDidReorderIcons:iconArray:)]) {
+		//	[delegate openSringBoardDidReorderIcons:self iconArray:[self createOrderedIconDictionaryArray]];
+		//}
+		
 	}
 }
 	

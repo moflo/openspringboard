@@ -2,8 +2,8 @@
 //  ToolsIconView.m
 //  openspringboard
 //
-//  Created by d. nye on 4/27/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Mobile Flow LLC on 2/21/11.
+//  Copyright 2011 Mobile Flow LLC. All rights reserved.
 //
 
 #import "ToolsIconView.h"
