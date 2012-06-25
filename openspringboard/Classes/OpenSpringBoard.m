@@ -475,7 +475,7 @@ GetCurrentTime(void)
 		if ([view class] == [ToolsIconView class]) {
 			// Make sure it's not a NSNull class
 			ToolsIconView *toolView = (ToolsIconView *)view;
-			if ((touch.view == toolView.toolIconButton)) {
+			if (touch.view == toolView.toolIconButton) {
 				return YES;
 			}
 		}
