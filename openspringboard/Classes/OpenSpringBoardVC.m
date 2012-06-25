@@ -82,11 +82,26 @@
 	NSDictionary *d;
 	itemArray = [[[NSMutableArray alloc] initWithCapacity:18] autorelease];
 
-	addIcon(@"tool_calendar_JAN.png",@"January",@"1")
-	addIcon(@"tool_calendar_FEB.png",@"February",@"2")
-	addIcon(@"tool_calendar_MAR.png",@"March",@"3")
-	addIcon(@"tool_calendar_APR.png",@"April",@"4")
-	addIcon(@"tool_calendar_MAY.png",@"May",@"5")
+    addIcon(@"tool_calendar_JAN.png",@"January",@"1")
+    addIcon(@"tool_calendar_FEB.png",@"February",@"2")
+    addIcon(@"tool_calendar_MAR.png",@"March",@"3")
+    
+    addIcon(@"tool_calendar_APR.png",@"April",@"4")
+    addIcon(@"tool_calendar_MAY.png",@"May",@"5")
+    addIcon(@"tool_calendar_JUL.png",@"January1",@"6")
+    
+    addIcon(@"tool_calendar_FEB.png",@"February1",@"7")
+    addIcon(@"tool_calendar_OCT.png",@"March1",@"8")
+    addIcon(@"tool_calendar_APR.png",@"April1",@"9")
+    
+    addIcon(@"tool_calendar_SEP.png",@"May1",@"10")
+    addIcon(@"tool_calendar_AUG.png",@"January2",@"11")
+    addIcon(@"tool_calendar_NOV.png",@"February2",@"12")
+    
+    addIcon(@"tool_calendar_DEC.png",@"March2",@"13")
+    addIcon(@"tool_calendar_APR_ON.png",@"April2",@"14")
+    addIcon(@"tool_calendar_AUG_ON.png",@"May2",@"15")
+    
 	
 	*numIcons = 9;
 	

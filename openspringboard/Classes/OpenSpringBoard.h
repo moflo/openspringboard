@@ -15,7 +15,7 @@
 @protocol OpenSpringBoardDelegate;
 
 
-@interface OpenSpringBoard : UIViewController  <UIGestureRecognizerDelegate> {
+@interface OpenSpringBoard : UIViewController  <UIGestureRecognizerDelegate,UIScrollViewDelegate> {
 	
 	IBOutlet UIImageView	*toolButtonSelected;
 	
@@ -34,6 +34,12 @@
 	BOOL isUserMovingIcons;										//!< Enter icon move mode, make icons dance!
 	
 	id <OpenSpringBoardDelegate> delegate;						//!< Delegate declaration
+    
+    IBOutlet UIPageControl	*pageControl;                       //!< page control for list of tools views
+	IBOutlet UIScrollView	*scrollView;                        //!< scroll view control for collection of tools views
+	IBOutlet UIView *pageOne, *pageTwo;                         //!< pages under control of the scrollView / pageControl
+	BOOL pageControlUsed;                                       //!< flag to store UI state
+
 
 }
 @property (nonatomic,assign) id <OpenSpringBoardDelegate> delegate;

@@ -102,6 +102,14 @@ GetCurrentTime(void)
 {
 	//! Method to programmatically build icon views
 	
+    // Create the scrollview cna page control programmatically
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)];
+    [self.view addSubview:scrollView];
+    pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(141, 374, 38, 36)];
+    [self.view addSubview:pageControl];
+    pageOne = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 347)];
+    pageTwo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 347)];
+    
 	/*** Refactor to delegate method
 	// Create an array of icons programmatically
 #define addIcon(png,title,code) d = [NSDictionary dictionaryWithObjectsAndKeys:png,@"icon_png",title,@"icon_title",code,@"icon_code",nil]; [itemArray addObject:d];
@@ -162,10 +170,10 @@ GetCurrentTime(void)
 	for (UIView *view in iconViews) {
 		if (i<num) {
 			if (page==1) {
-				[self.view addSubview:view];			// [pageOne addSubview:view];
+				[pageOne addSubview:view];			// [pageOne addSubview:view];
 			}
 			else {
-				[self.view addSubview:view];			// [pageTwo addSubview:view];
+				[pageTwo addSubview:view];			// [pageTwo addSubview:view];
 			}
 			//NSLog(@"view.tag=%d (%.2f,%.2f)",i,iconVerts[i].x,iconVerts[i].y);
 			view.center = CGPointMake(iconVerts[i].x,iconVerts[i].y);
@@ -176,6 +184,24 @@ GetCurrentTime(void)
 		}
 	}
 	
+    scrollView.pagingEnabled = YES;
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * page, 380);
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.scrollsToTop = NO;
+    scrollView.delegate = self;
+	
+    pageControl.numberOfPages = page;
+    pageControl.currentPage = 0;
+	
+	//! Stuff the static views into the scroll view
+	[scrollView addSubview:pageOne];
+	CGRect frame = scrollView.frame;
+	frame.origin.x = frame.size.width * 1;
+	frame.origin.y = 0;
+	pageTwo.frame = frame;
+	[scrollView addSubview:pageTwo];
+
 }
 
 - (void) listIconOrder
