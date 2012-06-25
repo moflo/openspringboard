@@ -14,10 +14,12 @@ WIP: current focus is on animation and gathering feedback on the look & feel; ne
 To-Do
 -----
 
-Refactor to a delegate protocol (done)
-Refactor OpenSpringBoard to a UIView (is this needed?)
-Remove NIB dependencies, create all views programmatically
-Add callback for button press (done)
-Add callback for reorder event
-Add delete capabilities
-Support horizontal and landscape modes
+- Refactor to a delegate protocol (done)
+- Refactor OpenSpringBoard to a UIView (is this needed?)
+- Remove NIB dependencies, create all views programmatically
+- Add callback for button press (done)
+- Add callback for reorder event
+- Add delete capabilities
+- Support horizontal and landscape modes
+- Move from fixed to dynamic pages
+- Fix bug when ordering icons across multiple pages
